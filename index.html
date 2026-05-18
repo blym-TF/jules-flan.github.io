@@ -5,10 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jules Flan — DevOps & Cybersécurité</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/features.css">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
+<!-- SCROLL PROGRESS BAR -->
+<div id="scroll-progress"></div>
 
 <!-- LOADER -->
 <div id="loader">
@@ -26,6 +30,7 @@
     <li><a href="#progression">Progression</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button id="theme-toggle" title="Changer le thème"><i class="fas fa-sun"></i></button>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
@@ -37,6 +42,27 @@
     <h1 class="hero-name">Jules <span class="accent">Flan</span></h1>
     <div class="hero-typed"><span id="typed-text"></span><span class="cursor">_</span></div>
     <p class="hero-desc">En formation Administrateur Systèmes & DevOps à M2i · Basé en Île-de-France · Passionné par l'automatisation, la cybersécurité et le cloud.</p>
+
+    <!-- STATS COMPTEURS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="counter" data-target="3" data-suffix="+">0</span>
+        <span>ans d'expérience</span>
+      </div>
+      <div class="stat-card">
+        <span class="counter" data-target="2" data-suffix="">0</span>
+        <span>certifications</span>
+      </div>
+      <div class="stat-card">
+        <span class="counter" data-target="4" data-suffix="+">0</span>
+        <span>projets réalisés</span>
+      </div>
+      <div class="stat-card">
+        <span class="counter" data-target="10" data-suffix="+">0</span>
+        <span>outils maîtrisés</span>
+      </div>
+    </div>
+
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">Voir mes projets</a>
       <a href="#contact" class="btn-secondary">Me contacter</a>
@@ -46,7 +72,9 @@
       <a href="https://www.linkedin.com/in/jules-flan-devops/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="mailto:pro.jflan@gmail.com"><i class="fas fa-envelope"></i></a>
     </div>
+    <div class="visit-counter"><i class="fas fa-eye"></i> <span id="visit-count">...</span> visites</div>
   </div>
+
   <div class="hero-terminal">
     <div class="terminal-bar"><span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span><span class="t-title">terminal — bash</span></div>
     <div class="terminal-body">
@@ -60,7 +88,11 @@
       <div class="t-line t-out accent-text">✓ Introduction to Cybersecurity — Cisco (juil. 2025)</div>
       <div class="t-line"><span class="t-prompt">jules@devops:~$</span> <span class="t-cmd">cat status.txt</span></div>
       <div class="t-line t-out" style="color:var(--green)">✓ Disponible — alternance & stage DevOps</div>
-      <div class="t-line"><span class="t-prompt">jules@devops:~$</span> <span class="t-cursor">█</span></div>
+      <div id="easter-output"></div>
+      <div class="easter-input-row">
+        <label>jules@devops:~$</label>
+        <input type="text" id="easter-input" placeholder="tape 'help'..." autocomplete="off" spellcheck="false">
+      </div>
     </div>
   </div>
 </section>
@@ -204,44 +236,44 @@
     </div>
     <div class="tab-content active" id="tab-devops">
       <div class="skills-grid">
-        <div class="skill-pill"><i class="fab fa-docker"></i> Docker</div>
-        <div class="skill-pill"><i class="fas fa-dharmachakra"></i> Kubernetes</div>
-        <div class="skill-pill"><i class="fas fa-code-branch"></i> GitLab CI/CD</div>
-        <div class="skill-pill"><i class="fab fa-git-alt"></i> Git</div>
-        <div class="skill-pill"><i class="fas fa-infinity"></i> Jenkins</div>
-        <div class="skill-pill"><i class="fas fa-ship"></i> Helm</div>
+        <div class="skill-pill" data-tooltip="Conteneurisation d'applications"><i class="fab fa-docker"></i> Docker</div>
+        <div class="skill-pill" data-tooltip="Orchestration de conteneurs"><i class="fas fa-dharmachakra"></i> Kubernetes</div>
+        <div class="skill-pill" data-tooltip="Pipelines CI/CD automatisées"><i class="fas fa-code-branch"></i> GitLab CI/CD</div>
+        <div class="skill-pill" data-tooltip="Gestion de versions"><i class="fab fa-git-alt"></i> Git</div>
+        <div class="skill-pill" data-tooltip="Automatisation build & deploy"><i class="fas fa-infinity"></i> Jenkins</div>
+        <div class="skill-pill" data-tooltip="Gestionnaire de packages Kubernetes"><i class="fas fa-ship"></i> Helm</div>
       </div>
     </div>
     <div class="tab-content" id="tab-security">
       <div class="skills-grid">
-        <div class="skill-pill"><i class="fas fa-shield-alt"></i> Wazuh</div>
-        <div class="skill-pill"><i class="fas fa-bug"></i> OpenVAS</div>
-        <div class="skill-pill"><i class="fas fa-network-wired"></i> CCNA (en cours)</div>
-        <div class="skill-pill"><i class="fas fa-eye"></i> SIEM</div>
-        <div class="skill-pill"><i class="fas fa-lock"></i> Hardening Linux</div>
-        <div class="skill-pill"><i class="fas fa-search"></i> Wireshark / Nmap</div>
+        <div class="skill-pill" data-tooltip="SIEM open source"><i class="fas fa-shield-alt"></i> Wazuh</div>
+        <div class="skill-pill" data-tooltip="Scanner de vulnérabilités"><i class="fas fa-bug"></i> OpenVAS</div>
+        <div class="skill-pill" data-tooltip="Certification réseaux Cisco"><i class="fas fa-network-wired"></i> CCNA (en cours)</div>
+        <div class="skill-pill" data-tooltip="Gestion des événements de sécurité"><i class="fas fa-eye"></i> SIEM</div>
+        <div class="skill-pill" data-tooltip="Sécurisation systèmes Linux"><i class="fas fa-lock"></i> Hardening Linux</div>
+        <div class="skill-pill" data-tooltip="Analyse réseau & audit"><i class="fas fa-search"></i> Wireshark / Nmap</div>
       </div>
     </div>
     <div class="tab-content" id="tab-infra">
       <div class="skills-grid">
-        <div class="skill-pill"><i class="fas fa-project-diagram"></i> Terraform</div>
-        <div class="skill-pill"><i class="fas fa-cogs"></i> Ansible</div>
-        <div class="skill-pill"><i class="fab fa-linux"></i> Linux / Ubuntu</div>
-        <div class="skill-pill"><i class="fab fa-windows"></i> Windows Server / AD</div>
-        <div class="skill-pill"><i class="fab fa-aws"></i> AWS</div>
-        <div class="skill-pill"><i class="fas fa-server"></i> Virtualisation (VMware)</div>
-        <div class="skill-pill"><i class="fas fa-wifi"></i> DNS / DHCP</div>
-        <div class="skill-pill"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-pill" data-tooltip="Infrastructure as Code"><i class="fas fa-project-diagram"></i> Terraform</div>
+        <div class="skill-pill" data-tooltip="Automatisation de configuration"><i class="fas fa-cogs"></i> Ansible</div>
+        <div class="skill-pill" data-tooltip="Administration systèmes"><i class="fab fa-linux"></i> Linux / Ubuntu</div>
+        <div class="skill-pill" data-tooltip="Active Directory & services Windows"><i class="fab fa-windows"></i> Windows Server / AD</div>
+        <div class="skill-pill" data-tooltip="Cloud Amazon Web Services"><i class="fab fa-aws"></i> AWS</div>
+        <div class="skill-pill" data-tooltip="VMware, VirtualBox"><i class="fas fa-server"></i> Virtualisation</div>
+        <div class="skill-pill" data-tooltip="Services réseau essentiels"><i class="fas fa-wifi"></i> DNS / DHCP</div>
+        <div class="skill-pill" data-tooltip="Bases de données relationnelles"><i class="fas fa-database"></i> SQL</div>
       </div>
     </div>
     <div class="tab-content" id="tab-scripting">
       <div class="skills-grid">
-        <div class="skill-pill"><i class="fab fa-python"></i> Python</div>
-        <div class="skill-pill"><i class="fas fa-terminal"></i> Bash</div>
-        <div class="skill-pill"><i class="fab fa-windows"></i> PowerShell</div>
-        <div class="skill-pill"><i class="fas fa-code"></i> YAML</div>
-        <div class="skill-pill"><i class="fas fa-file-code"></i> HCL (Terraform)</div>
-        <div class="skill-pill"><i class="fas fa-database"></i> SQL</div>
+        <div class="skill-pill" data-tooltip="Scripts d'automatisation & DevOps"><i class="fab fa-python"></i> Python</div>
+        <div class="skill-pill" data-tooltip="Scripts systèmes Linux"><i class="fas fa-terminal"></i> Bash</div>
+        <div class="skill-pill" data-tooltip="Administration Windows"><i class="fab fa-windows"></i> PowerShell</div>
+        <div class="skill-pill" data-tooltip="Configuration Docker, CI/CD"><i class="fas fa-code"></i> YAML</div>
+        <div class="skill-pill" data-tooltip="Langage Terraform"><i class="fas fa-file-code"></i> HCL (Terraform)</div>
+        <div class="skill-pill" data-tooltip="Bases de données"><i class="fas fa-database"></i> SQL</div>
       </div>
     </div>
   </div>
@@ -252,26 +284,36 @@
   <div class="section-inner">
     <div class="section-tag">&lt;projects /&gt;</div>
     <h2 class="section-title">Mes Projets</h2>
+
+    <!-- FILTRE -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Tous</button>
+      <button class="filter-btn" data-filter="docker">Docker</button>
+      <button class="filter-btn" data-filter="ansible">Ansible</button>
+      <button class="filter-btn" data-filter="terraform">Terraform</button>
+      <button class="filter-btn" data-filter="securite">Sécurité</button>
+    </div>
+
     <div class="projects-grid">
-      <div class="project-card">
+      <div class="project-card" data-tags="docker kubernetes gitlab">
         <div class="project-header"><i class="fas fa-layer-group"></i><div class="project-links"><a href="https://github.com/blym-TF" target="_blank"><i class="fab fa-github"></i></a></div></div>
         <h3>Pipeline CI/CD Automatisée</h3>
         <p>Mise en place d'une pipeline complète avec GitLab CI, Docker et déploiement Kubernetes. Build automatique, tests et déploiement continu.</p>
         <div class="project-tags"><span>Docker</span><span>Kubernetes</span><span>GitLab CI</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" data-tags="securite wazuh siem">
         <div class="project-header"><i class="fas fa-shield-virus"></i><div class="project-links"><a href="https://github.com/blym-TF" target="_blank"><i class="fab fa-github"></i></a></div></div>
         <h3>Audit de Sécurité Infrastructure</h3>
         <p>Déploiement de Wazuh et OpenVAS pour la surveillance continue. Détection d'intrusions, analyse des logs et rapports de vulnérabilités.</p>
         <div class="project-tags"><span>Wazuh</span><span>OpenVAS</span><span>SIEM</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" data-tags="terraform aws iac">
         <div class="project-header"><i class="fas fa-cloud-upload-alt"></i><div class="project-links"><a href="https://github.com/blym-TF" target="_blank"><i class="fab fa-github"></i></a></div></div>
         <h3>Infrastructure Cloud avec Terraform</h3>
         <p>Provisionnement automatique d'une infrastructure cloud complète. VPC, EC2, S3 et configuration réseau as code.</p>
         <div class="project-tags"><span>Terraform</span><span>AWS</span><span>IaC</span></div>
       </div>
-      <div class="project-card">
+      <div class="project-card" data-tags="ansible linux automatisation">
         <div class="project-header"><i class="fas fa-robot"></i><div class="project-links"><a href="https://github.com/blym-TF" target="_blank"><i class="fab fa-github"></i></a></div></div>
         <h3>Automatisation Ansible</h3>
         <p>Playbooks Ansible pour déployer et configurer automatiquement des serveurs Linux. Hardening, installation de services et mises à jour automatiques.</p>
@@ -331,7 +373,26 @@
     <div class="section-tag">&lt;contact /&gt;</div>
     <h2 class="section-title">Me Contacter</h2>
     <p class="contact-sub">Disponible pour une alternance, un stage, ou simplement pour échanger sur le DevOps et la cybersécurité.</p>
-    <div class="contact-terminal">
+
+    <!-- FORMULAIRE -->
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="name">"nom"</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+      </div>
+      <div class="form-group">
+        <label for="email">"email"</label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="message">"message"</label>
+        <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Envoyer <i class="fas fa-paper-plane"></i></button>
+      <p id="form-message" class="form-msg"></p>
+    </form>
+
+    <div class="contact-terminal" style="margin-top:3rem">
       <div class="terminal-bar"><span class="t-dot red"></span><span class="t-dot yellow"></span><span class="t-dot green"></span><span class="t-title">contact.json</span></div>
       <div class="contact-body">
         <div class="c-line"><span class="c-key">"email"</span> <a href="mailto:pro.jflan@gmail.com">"pro.jflan@gmail.com"</a></div>
@@ -352,6 +413,9 @@
     <a href="mailto:pro.jflan@gmail.com"><i class="fas fa-envelope"></i></a>
   </div>
 </footer>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top" title="Retour en haut"><i class="fas fa-chevron-up"></i></button>
 
 <script src="assets/js/script.js"></script>
 </body>
