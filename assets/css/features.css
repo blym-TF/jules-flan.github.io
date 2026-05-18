@@ -1,0 +1,255 @@
+/* ============================================================
+   LIGHT MODE
+============================================================ */
+body.light-mode {
+  --bg: #f0f4f8;
+  --bg2: #e2e8f0;
+  --bg3: #cbd5e1;
+  --text: #0f172a;
+  --text2: #475569;
+  --border: #94a3b8;
+  --card: #ffffff;
+}
+body.light-mode #navbar { background: rgba(240,244,248,0.92) !important; }
+body.light-mode .terminal-body,
+body.light-mode .contact-body { background: #1e293b; }
+
+/* THEME TOGGLE BUTTON */
+#theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  margin-left: 1rem;
+}
+#theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+============================================================ */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ============================================================
+   BACK TO TOP
+============================================================ */
+#back-to-top {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  width: 44px; height: 44px;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.3s;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+}
+#back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+#back-to-top:hover { background: #00b8d9; transform: translateY(-3px); }
+
+/* ============================================================
+   COMPTEURS ANIMÉS
+============================================================ */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  justify-content: center;
+}
+.stat-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem 2rem;
+  text-align: center;
+  min-width: 130px;
+  transition: border-color 0.2s;
+}
+.stat-card:hover { border-color: var(--accent); }
+.stat-card .counter {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  display: block;
+}
+.stat-card span:last-child {
+  font-size: 0.8rem;
+  color: var(--text2);
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* ============================================================
+   FILTRE PROJETS
+============================================================ */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: var(--font-sans);
+  transition: all 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--accent2);
+  border-color: var(--accent2);
+  color: #fff;
+}
+
+/* ============================================================
+   TOOLTIPS
+============================================================ */
+.skill-tooltip {
+  position: absolute;
+  background: var(--bg3);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* ============================================================
+   EASTER EGG TERMINAL
+============================================================ */
+.easter-terminal {
+  margin-top: 2rem;
+  max-width: 600px;
+}
+.easter-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  padding: 0 1.5rem 1.5rem;
+  background: #0d1117;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid var(--border);
+  border-top: none;
+}
+.easter-input-row label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--green);
+  white-space: nowrap;
+}
+#easter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  caret-color: var(--accent);
+}
+#easter-output {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  padding: 0.5rem 1.5rem 0;
+  min-height: 1.5rem;
+  background: #0d1117;
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+/* ============================================================
+   COMPTEUR VISITES
+============================================================ */
+.visit-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text2);
+  margin-top: 1rem;
+}
+.visit-counter i { color: var(--accent2); }
+
+/* ============================================================
+   FORMULAIRE DE CONTACT
+============================================================ */
+#contact-form {
+  max-width: 580px;
+  margin: 2rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.form-group label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent2);
+}
+.form-group input,
+.form-group textarea {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--accent); }
+.form-submit {
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.form-submit:hover { background: #00b8d9; transform: translateY(-2px); }
+.form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.form-msg { font-family: var(--font-mono); font-size: 0.82rem; margin-top: 0.5rem; }
+.form-msg.success { color: var(--green); }
+.form-msg.error { color: #f87171; }
